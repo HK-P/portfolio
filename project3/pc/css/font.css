@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+/*영문 1벌, 한글 1벌을 구글폰트에서 지정*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@300;400;600&display=swap');
+
+body {font-family: 'Noto Sans KR', 'Nanum Gothic', 'Gothic A1', 'Roboto', sans-serif;}
+
+#header .slider .keytext {font-family: 'Roboto Condensed', sans-serif;}

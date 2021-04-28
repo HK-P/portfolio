@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<title>project2</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/reset.css"><!-- reset.css -->
+    <link rel="stylesheet" href="css/font.css"><!-- font.css -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			//메뉴
+			$(".menu_btn .btn").click(function(e){
+				e.preventDefault();
+				$("#mobile_gnb").addClass("active");
+				$(".dim").addClass("active");
+				$("body").addClass("fixed");
+			});
+			$("#mobile_gnb .close").click(function(){
+				$("#mobile_gnb > ul > li").removeClass("active");
+				$("#mobile_gnb").removeClass("active");
+				$(".dim").removeClass("active");
+				$("body").removeClass("fixed");
+			});
+			$(".dim").click(function(){
+				$("#mobile_gnb > ul > li").removeClass("active");
+				$("#mobile_gnb").removeClass("active");
+				$(".dim").removeClass("active");
+			});
+
+			$("#mobile_gnb > ul > li").click(function(e){
+				e.preventDefault();
+
+				if( $(this).hasClass("active") == false ){ // .active가 없을 때
+					$("#mobile_gnb > ul > li").removeClass("active");
+					$(this).addClass("active");
+
+					$("#mobile_gnb ul ul").slideUp(400); //2depth 전체 숨김
+					$(this).find("ul").slideDown(400);
+				}
+				else { // .active가 있을 때
+					$(this).removeClass("active");
+					$(this).find("ul").slideUp(400); // 해당 2depth 숨김
+				}
+			});
+
+			var last_scroll = $(window).scrollTop(),
+				scroll_value = $(window).scrollTop();
+						
+			$(window).scroll(function(){
+				scroll_value = $(this).scrollTop(); //현재 스크롤
+				
+				if(scroll_value > last_scroll){ //스크롤 내리면 메뉴 숨음
+					$("#header .menu").addClass("close");
+					$("#header .search_box").addClass("close");
+				}
+				else if (scroll_value < last_scroll){ //스크롤 올리면 메뉴 나옴
+					$("#header .menu").removeClass("close");
+					$("#header .search_box").removeClass("close");
+				}
+				
+				last_scroll = scroll_value; //마지막 스크롤값이 기준
+				//last_scroll = $(this).scrollTop();
+			});
+
+			//메뉴-검색
+			$("#header .menu_btn .search").click(function(e){
+				e.preventDefault();
+				$(this).toggleClass("close");
+				$("#header .search_box").slideToggle(300);
+			});
+
+			//메인 슬라이더
+			var main_swiper = new Swiper('.main_slider .swiper-container', {
+				pagination: {
+		        	el: '.main_slider .swiper-pagination',
+		      	},
+		      	navigation: {
+					nextEl: '.main_slider .swiper-button-next',
+					prevEl: '.main_slider .swiper-button-prev',
+				},
+			});
+
+			
+			//서브 슬라이더 #content .news
+			//슬라이더 tab
+			var slider_n = 0;
+			$("#content .news .tab li").eq(0).addClass("active");
+			$(".news .slider_box .sub_slider").eq(slider_n).addClass("active");
+
+			$("#content .news .tab li").click(function(e){
+				e.preventDefault();
+
+				slider_n = $(this).index();
+				$("#content .news .tab li").removeClass("active");
+				$(this).addClass("active");
+				$(".news .slider_box .sub_slider").removeClass("active");
+				$(".news .slider_box .sub_slider").eq(slider_n).addClass("active");
+			});
+
+			/*news*/
+			var news_swiper = new Swiper('.news_slider .swiper-container', {
+				observer: true, /* display: none -> block 오류 */
+			    observeParents: true, /* display: none -> block 오류 */
+
+				speed: 400,
+				spaceBetween: 10,
+				autoplay: {
+				   delay: 3000,
+				 },
+				pagination: {
+					el: '.news_slider .swiper-pagination',
+				},
+			});
+
+			$(".news_slider a.play").click(function(e){
+				e.preventDefault();
+				if(news_swiper.autoplay.running){ //재생중일 떄
+					$(this).addClass("paused");
+					news_swiper.autoplay.stop();
+				} else {
+					$(this).removeClass("paused");
+					news_swiper.autoplay.start();
+				}
+				
+			});
+			/*webzine*/
+			var webzine_swiper = new Swiper('.webzine_slider .swiper-container', {
+				observer: true,
+			    observeParents: true,
+
+				autoplay: {
+				   delay: 3000,
+				 },
+				pagination: {
+					el: '.webzine_slider .swiper-pagination',
+				},
+			});
+
+			$(".webzine_slider a.play").click(function(e){
+				e.preventDefault();
+				if(webzine_swiper.autoplay.running){ //재생중일 떄
+					$(this).addClass("paused");
+					webzine_swiper.autoplay.stop();
+				} else {
+					$(this).removeClass("paused");
+					webzine_swiper.autoplay.start();
+				}
+				
+			});
+			/*event*/
+			var event_swiper = new Swiper('.event_slider .swiper-container', {
+				observer: true,
+			    observeParents: true,
+
+				autoplay: {
+				   delay: 3000,
+				 },
+				pagination: {
+					el: '.event_slider .swiper-pagination',
+				},
+			});
+
+			$(".event_slider a.play").click(function(e){
+				e.preventDefault();
+				if(event_swiper.autoplay.running){ //재생중일 떄
+					$(this).addClass("paused");
+					event_swiper.autoplay.stop();
+				} else {
+					$(this).removeClass("paused");
+					event_swiper.autoplay.start();
+				}
+				
+			});
+			/*promote*/
+			var promote_swiper = new Swiper('.promote_slider .swiper-container', {
+				observer: true,
+			    observeParents: true,
+
+				autoplay: {
+				   delay: 3000,
+				 },
+				pagination: {
+					el: '.promote_slider .swiper-pagination',
+				},
+			});
+
+			$(".promote_slider a.play").click(function(e){
+				e.preventDefault();
+				if(promote_swiper.autoplay.running){ //재생중일 떄
+					$(this).addClass("paused");
+					promote_swiper.autoplay.stop();
+				} else {
+					$(this).removeClass("paused");
+					promote_swiper.autoplay.start();
+				}
+				
+			});
+
+			//recruit
+			var recruit_swiper = new Swiper('.recruit_slider .swiper-container', {
+				speed : 600,
+				autoplay : {
+					delay : 3500,
+				},
+				loop : true,
+				slidesPerView: 1,
+				spaceBetween: 20,
+					// Responsive breakpoints
+					breakpoints: {
+					500: { // 500px 이상
+						slidesPerView: 2,
+						spaceBetween: 10
+					}
+				}
+				
+			});
+
+			//footer family
+			$(".family dt a").click(function(e){
+				e.preventDefault();
+
+				if($(this).hasClass("active") == false){ //active 없으면 추가(메뉴보임)
+					$(this).addClass("active");
+					$(".family dd ul").slideDown(400);
+				}		
+
+				else { // active 있으면 삭제(메뉴숨김)
+					$(this).removeClass("active");
+					$(".family dd ul").slideUp(400);
+				}	
+
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header id="header">
+			<div class="menu">
+				<div class="logo"><h1><a href=""><img src="images/logo.png" alt="로고"></a></h1></div>
+				<div class="menu_btn">
+					<a href="" class="btn">메뉴</a>
+					<a href="" class="search">검색</a>
+				</div>
+			</div>
+			<!-- 모바일메뉴 -->
+			<nav id="mobile_gnb">
+				<ul>
+					<li class="close"><a href=""><img src="images/btn_close.gif" alt="닫기버튼"> 닫기</a></li>
+					<li><a href="">HOME</a></li>
+					<li><a href="">회사소개</a>
+						<ul>
+							<li><a href="">한글라스 소개</a></li>
+							<li><a href="">비전</a></li>
+							<li><a href="">연혁</a></li>
+							<li><a href="">R&amp;D 센터</a></li>
+							<li><a href="">IR 정보</a></li>
+							<li><a href="">인재채용</a></li>
+							<li><a href="">오시는 길</a></li>
+							<li><a href="">사이버신문고</a></li>
+						</ul>
+					</li>
+					<li><a href="">제품소개</a>
+						<ul>
+							<li><a href="">제품 및 솔루션</a></li>
+							<li><a href="">카다로그 자료실</a></li>
+							<li><a href="">기술지원</a></li>
+						</ul>
+					</li>
+					<li><a href="">듀오라이트클럽</a>
+						<ul>
+							<li><a href="">한글라스 클럽제도 소개</a></li>
+							<li><a href="">회원사 소개</a></li>
+							<li><a href="">가입절차 소개</a></li>
+							<li><a href="">공지사항</a></li>
+						</ul>
+					</li>
+					<li><a href="">고객지원</a>
+						<ul>
+							<li><a href="">홍보센터</a></li>
+							<li><a href="">홍보센터</a></li>
+							<li><a href="">대리점 안내</a></li>
+							<li><a href="">FAQ</a></li>
+							<li><a href="">Q&amp;A</a></li>
+						</ul>
+					</li>
+				</ul>
+			</nav>
+			<div class="search_box">
+				<input type="text" placeholder="검색어를 입력해주세요">
+				<a href=""></a>
+			</div>
+			<div class="dim"></div>
+
+			<div class="main_slider">
+				<!-- Swiper -->
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<a href="">
+								<div class="text">
+									<h2>"DUOLITE 복층유리의 대표브랜드"</h2>
+									<p>새로운 듀오라이트 마크를 확인하세요!<span>자세히 보기</span></p>
+								</div>
+							</a>
+						</div>
+						<div class="swiper-slide">
+							<a href="">
+								<div class="text">
+									<h2>"한글라스 스위스페이서 SWISSPACER"</h2>
+									<p>복층 유리의 단열성능을 향상시켜주는<br>단열스페이서입니다.<span>자세히 보기</span></p>
+									
+								</div>
+							</a>
+						</div>
+						<div class="swiper-slide">
+							<a href="">
+								<div class="text">
+									<h2>"에스라이트 ESLITE 듀라 맥스 출시"</h2>
+									<p>최고의 단열성능과 간편한 가공이 가능한<br>고내구성 투명 로이유리입니다.<span>자세히 보기</span></p>
+								</div>
+							</a>
+						</div>
+					</div>
+					<!-- Add Pagination -->
+					<div class="swiper-pagination"></div>
+				</div>
+				<!-- Add Arrows -->
+				<div class="swiper-button-next"></div>
+				<div class="swiper-button-prev"></div>	
+			</div>
+
+		</header><!-- // header-->
+		<section id="content">
+			<div class="intro">
+				<div class="title">
+					<h2>about</h2>
+					<p>한글라스를 소개합니다</p>
+				</div>
+				<ul>
+					<li>
+						<a href="">
+							<div class="img"><img src="images/about_img1.jpg" alt="정도경영"></div>
+							<div class="text">
+								<p>
+									<span class="type">brand</span>
+									<span class="txt">정도경영</span>								
+								</p>
+							</div>
+							<p class="desc">한글라스는 사람을 존중하고<br> 고객을 위한 가치창조에 주력</p>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<div class="img"><img src="images/about_img2.jpg" alt="창업정신"></div>
+							<div class="text">
+								<p>
+									<span class="type">Value</span>
+									<span class="txt">창업정신</span>								
+								</p>
+							</div>
+							<p class="desc">"세상을 밝고 아름답고 이롭게"한다는<br>창업정신으로 모든 제품개발 및 보급에<br>온 힘을 기울이고 있습니다.</p>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<div class="img"><img src="images/about_img3.jpg" alt="환경"></div>
+							<div class="text">
+								<p>
+									<span class="type">Eco</span>
+									<span class="txt">환경</span>								
+								</p>
+							</div>
+							<p class="desc">끊임없는 연구개발과 노력을 통해<br>더 나은 미래를 준비하고 있습니다.</p>
+						</a>
+					</li>
+				</ul>
+			</div><!--// intro-->
+			<div class="product">
+				<div class="title">
+					<h2>product</h2>
+					<p>한글라스의 제품을 소개합니다</p>
+				</div>
+				<ul class="clearfix">
+					<li>
+						<a href="">
+							<div class="img"><img src="images/product_01.jpg" alt="로이유리"></div>
+							<div class="text">
+								<p>
+									<span>로이유리</span>
+									<span>LOW-E GLASS</span>
+								</p>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<div class="img"><img src="images/product_02.jpg" alt="특수유리"></div>
+							<div class="text">
+								<p>
+									<span>특수유리</span>
+									<span>SPECIAL GLASS</span>
+								</p>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<div class="img"><img src="images/product_03.jpg" alt="듀오라이트 클럽"></div>
+							<div class="text">
+								<p>
+									<span>듀오라이트 클럽</span>
+									<span>DUOLITE CLUB</span>
+								</p>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<div class="img"><img src="images/product_04.jpg" alt="글라스 파티션"></div>
+							<div class="text">
+								<p>
+									<span>글라스 파티션</span>
+									<span>GLASS PARTITION</span>
+								</p>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div><!--// product-->			
+			<div class="news">
+				<div class="title">
+					<h2>news</h2>
+					<p>가장 최신의 한글라스 소식을 실시간으로 전달해드립니다</p>
+				</div>
+				<div class="slider_box">
+					<div class="tab clearfix">
+						<ul>
+							<li><a href="">news</a></li>
+							<li><a href="">웹진</a></li>
+							<li><a href="">이벤트</a></li>
+							<li><a href="">홍보영상</a></li>
+						</ul>
+					</div><!-- //tab -->
+					
+					<div class="sub_slider news_slider">
+						<!-- Swiper -->
+						<div class="swiper-container">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<a href="">
+										<div class="title">
+											<dl>
+												<dt>한글라스, 군산공장 생산설비 1,300억원 투자 결정</dt>
+												<dd>2020-10-12</dd>
+											</dl>
+										</div>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="">
+										<div class="title">
+											<dl>
+												<dt>한글라스, 리모델링 창호 시장에 코팅유리 완제품 공급 확대</dt>
+												<dd>2020-10-12</dd>
+											</dl>
+										</div>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="">
+										<div class="title">
+											<dl>
+												<dt>한글라스, 밝고 화사한 실내 유지해주는 고투과 고성능 투명 더블로이 SKN176II 출시</dt>
+												<dd>2020-10-12</dd>
+											</dl>
+										</div>
+									</a>
+								</div>
+							</div>						
+						</div>
+						<!-- Add Pagination -->
+						<div class="pagination">
+   							<a href="" class="play"><span>play</span></a>
+							<div class="swiper-pagination"></div>
+   						</div>
+					</div><!-- // news_slider -->
+					<div class="sub_slider webzine_slider">
+						<!-- Swiper -->
+						<div class="swiper-container">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<a href="">
+										<div class="title">
+											<dl>
+												<dt>한글라스 직원인터뷰 4탄</dt>
+												<dd>2019-01-16</dd>
+											</dl>
+										</div>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="">
+										<div class="title">
+											<dl>
+												<dt>한글라스 직원인터뷰 3탄</dt>
+												<dd>2019-01-16</dd>
+											</dl>
+										</div>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="">
+										<div class="title">
+											<dl>
+												<dt>대리점인터뷰_합동하이텍그라스</dt>
+												<dd>2018-12-19</dd>
+											</dl>
+										</div>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="">
+										<div class="title">
+											<dl>
+												<dt>한글라스 직원인터뷰 2탄</dt>
+												<dd>2018-09-27</dd>
+											</dl>
+										</div>
+									</a>
+								</div>
+							</div>						
+						</div>
+						<!-- Add Pagination -->
+						<div class="pagination">
+   							<a href="" class="play"><span>play</span></a>
+							<div class="swiper-pagination"></div>
+   						</div>
+					</div><!-- // webzine_slider -->
+					<div class="sub_slider event_slider">
+						<!-- Swiper -->
+						<div class="swiper-container">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<a href="">
+										<div class="title">
+											<dl>
+												<dt>12월 두번째 퀴즈 이벤트 당첨자</dt>
+												<dd>2020-12-28</dd>
+											</dl>
+										</div>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="">
+										<div class="title">
+											<dl>
+												<dt>12월 두번째 퀴즈 이벤트</dt>
+												<dd>
+													이벤트기간 : 2020-12-15 ~ 2020-12-24<br>
+													당첨자발표 : 2020-12-28 
+												</dd>
+											</dl>
+										</div>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="">
+										<div class="title">
+											<dl>
+												<dt>12월 첫번째 작대기 퀴즈 이벤트 당첨자</dt>
+												<dd>2020-12-14</dd>
+											</dl>
+										</div>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="">
+										<div class="title">
+											<dl>
+												<dt>12월 첫번째 작대기 퀴즈 이벤트</dt>
+												<dd>
+													이벤트기간 : 2020-12-01 ~ 2020-12-11<br>
+													당첨자발표 : 2020-12-14
+												</dd>
+											</dl>
+										</div>
+									</a>
+								</div>
+							</div>						
+						</div>
+						<!-- Add Pagination -->
+						<div class="pagination">
+   							<a href="" class="play"><span>play</span></a>
+							<div class="swiper-pagination"></div>
+   						</div>
+					</div><!-- // event_slider -->
+					<div class="sub_slider promote_slider">
+						<!-- Swiper -->
+						<div class="swiper-container">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<a href="">
+										<div class="title">
+											<dl>
+												<dt>한글라스 홍보영상 - 60주년을 기념하며</dt>
+												<dd>2017-12-26</dd>
+											</dl>
+										</div>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="">
+										<div class="title">
+											<dl>
+												<dt>채널A 김현욱의 굿모닝</dt>
+												<dd>2017-12-04</dd>
+											</dl>
+										</div>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="">
+										<div class="title">
+											<dl>
+												<dt>한글라스 에너지 절감 유리</dt>
+												<dd>2016-12-08</dd>
+											</dl>
+										</div>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="">
+										<div class="title">
+											<dl>
+												<dt>한글라스 제2코팅 가공공장 기공식</dt>
+												<dd>2016-12-02</dd>
+											</dl>
+										</div>
+									</a>
+								</div>
+							</div>						
+						</div>
+						<!-- Add Pagination -->
+						<div class="pagination">
+   							<a href="" class="play"><span>play</span></a>
+							<div class="swiper-pagination"></div>
+   						</div>
+					</div><!-- // promote_slider -->
+				</div>
+			</div>
+			<!--//news-->
+			<div class="recruit">
+				<div class="title">
+					<h2>recruit</h2>
+					<p>한글라스에서 함께 발전할 인재를 기다립니다</p>
+				</div>
+				<div class="recruit_slider">
+					<!-- Swiper -->
+					<div class="swiper-container">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<a href="">
+									<div class="info">
+										<span class="schedule">진행중</span>
+										<p class="title">2021년 부문별 신입 및 경력 사원 모집</p>
+										<p class="desc">
+											채용형태 : 정규직<br>
+											근무지 : 서울 본사[서울시 강남구 테헤란로 543 글라스타워빌딩 5층] 군산 공장 전라북도 군산시 외항 1길 296번지
+										</p>
+										<div class="date">
+											<span class="icon"><img src="images/icon_date.png" alt="시간"></span>
+											<span class="text">2021-01-09 ~ 2021-01-13</span>
+										</div>
+									</div>
+								</a>
+							</div>
+							<div class="swiper-slide">
+								<a href="">
+									<div class="info">
+										<span class="schedule end">채용마감</span>
+										<p class="title">영업부문 및 기획부문 신입 및 경력 직원 모집</p>
+										<p class="desc">
+											채용형태 : 정규직<br>
+											근무지 : 서울 본사[서울시 강남구 테헤란로 543 글라스타워빌딩 5층]
+											채용절차 : 서류심사 - 1차 면접 - 2차 면접 - 최종합격
+										</p>
+										<div class="date">
+											<span class="icon"><img src="images/icon_date.png" alt="시간"></span>
+											<span class="text">2020-12-07 ~ 2020-12-17</span>
+										</div>
+									</div>
+								</a>
+							</div>
+							<div class="swiper-slide">
+								<a href="">
+									<div class="info">
+										<span class="schedule end">채용마감</span>
+										<p class="title">한국유리공업㈜ 생산직 신입 사원 모집</p>
+										<p class="desc">
+											부문 : 생산기능직<br>
+											자격요건 : 학력/전공/나이/성별 : 무관
+											전형절차 : 서류 심사 - 1차 면접 전형 - 2차 면접 전형 - 채용 신체 검사
+										</p>
+										<div class="date">
+											<span class="icon"><img src="images/icon_date.png" alt="시간"></span>
+											<span class="text">2020-12-02 ~ 2020-12-21</span>
+										</div>
+									</div>
+								</a>
+							</div>
+							<div class="swiper-slide">
+								<a href="">
+									<div class="info">
+										<span class="schedule end">채용마감</span>
+										<p class="title">한국유리공업㈜ 2020년 각 부문별 직원 모집</p>
+										<p class="desc">
+											부문 : 각부문별<br>
+											전형절차 : 서류전형-1차 면접전형-2차 면접전형-최종 합격자 발표 &nbsp;
+											근무환경 : 근무장소 서울시 강남구 테헤란로 543 글라스타워
+											근무시간 : 월~금(오전 8시 30분~오후 5시 30분)
+										</p>
+										<div class="date">
+											<span class="icon"><img src="images/icon_date.png" alt="시간"></span>
+											<span class="text">2020-05-13 ~ 2020-05-20</span>
+										</div>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div><!-- // recruit_slider -->
+			</div>
+			<!-- //recruit -->
+		</section><!-- // section-->
+		<footer id="footer">
+			<div class="util">
+				<ul>
+					<li><a href="">회사소개</a></li>
+					<li><a href="">Q&amp;A</a></li>
+					<li><a href=""><span>개인정보처리방침</span></a></li>
+					<li><a href="">사이트맵</a></li>
+				</ul>
+			</div>
+			<div class="logo">
+				<a href=""><img src="images/logo.png" alt="로고"></a>
+			</div>
+			<div class="address">
+				<p class="addr">한국유리공업㈜<br>서울특별시 강남구 테헤란로 534 글라스타워빌딩 5층<br>사업자 등록번호 : 542-88-01592   대표자: 이용성</p>
+				<p class="copy">@COPYRIGHT 2016HANGLAS.CO.LTD. ALL RIGHT RESERVED.</p>
+			</div>
+			<div class="family">
+				<dl>
+					<dt>
+						<a href="" class="btn">관계사 바로가기</a>
+					</dt>
+					<dd>
+						<ul>
+							<li><a href="">한글라스 블로그</a></li>
+							<li><a href="">기술연구소</a></li>
+						</ul>
+					</dd>
+				</dl>
+			</div>
+			
+		</footer><!-- // footer-->
+	</div>
+</body>
+</html>
