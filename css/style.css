@@ -38,11 +38,10 @@ body {min-width: 330px; overflow-y: hidden;}
 
 
 #header .main .left {position: absolute; width: 50%; height: 100%; top: 0; left: 0; z-index: 10;}
-#header .main .left .message {position: relative; top: 50%; right: -80px; display: block; padding: 120px 20px 40px; text-align: center; background-color: #fff; box-sizing: border-box; transform: translateY(-50%);}
+#header .main .left .message {position: relative; top: 50%; right: -80px; display: block; padding: 120px 20px 80px; text-align: center; background-color: #fff; box-sizing: border-box; transform: translateY(-50%);}
 #header .main .left .message > span {position: absolute; top: 20px; left: 20px; text-align: left; font-family: 'Tangerine', cursive; font-size: 5em; transform: rotate(-5deg);}
 #header .main .left .message p {font-family: 'Black Han Sans', sans-serif; font-size: 2.25em;}
 #header .main .left .message p .color {color: #7d8c98;}
-#header .main .left .message a.go_about {display: block; width: 110px; margin: 0 auto; margin-top: 40px; padding: 0 20px; line-height: 34px; font-size: 0.875em; color: #fff; background-color: #101011; border-radius: 5px; box-sizing: border-box;}
 
 #header .main .right {position: absolute; width: 50%; height: 100%; top: 0; right: 0;}
 #header .main .right .photo {position: absolute; top: 50%; width: 26em; height: 40em; border: 30px solid #fff; box-sizing: border-box; transform: translateY(-50%); background: url(../images/main_me.png)no-repeat center; background-size: cover;}
