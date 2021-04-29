@@ -150,17 +150,17 @@ $(function(){
 		bar.animate("0."+percent);
 	}
 
-// page2 slide
-	var swiper = new Swiper('.page2 .pc .swiper-container', {
+// page3 slide
+	var swiper = new Swiper('.page3 .pc .swiper-container', {
 		loop: true,
 		effect: 'fade',
 		pagination: {
-			el: '.page2 .pc .swiper-pagination',
+			el: '.page3 .pc .swiper-pagination',
 			type: 'fraction',
 		},
 		navigation: {
-			nextEl: '.page2 .pc .swiper-button-next',
-			prevEl: '.page2 .pc .swiper-button-prev',
+			nextEl: '.page3 .pc .swiper-button-next',
+			prevEl: '.page3 .pc .swiper-button-prev',
 		},
     });
 

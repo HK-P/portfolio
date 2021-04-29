@@ -82,22 +82,56 @@ body {min-width: 330px; overflow-y: hidden;}
 
 
 /* page2 */
-.page2 {height: 100vh; overflow: hidden; background-color: #f8f8f8; position: relative;}
-.page2 > .bg {position: absolute; top: 0; right: 0; width: 30%; height: 100%; background-color: #edf2f6;}
+.page2 {height: 100vh; overflow: hidden; background-color: #f8f8f8;}
+
+.page2 .mobile > ul > li {float: left; width: 20%; height: 100vh; background-color: #f8f8f8; padding: 0 40px; box-sizing: border-box;}
+.page2 .mobile > ul > li:hover {background-color: #e8dfd1;}
+
+.page2 .mobile .number {display: block; font-size: 6.25em; font-weight: 600; color: #eeeeee; letter-spacing: -5px; margin-top: 60px;}
+.page2 .mobile > ul > li:hover .number {color: #7d8c98;}
+
+.page2 .mobile .cont {margin-top: 10px; transform: translateY(60px); transition: transform 0.6s;}
+.page2 .mobile > ul > li:hover .cont {transform: translateY(0); }
+
+
+.page2 .mobile .cont .title {margin-bottom: 20px;}
+.page2 .mobile .cont .title h3 {font-size: 1.625em; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;}
+.page2 .mobile .cont .title .tit {display: block; margin-top: -5px; font-size: 0.875em; font-weight: 600; color: #b4b3b1; text-transform: uppercase;}
+
+.page2 .mobile .cont .img {position: relative; width: 100%; height: 14em; overflow: hidden;}
+.page2 .mobile .cont .img img {max-width: 100%; position: absolute; width: 100%; top: 50%; left: 50%; transform: translate(-50%, -50%);}
+
+.page2 .mobile .cont .txt {margin-top: 20px;}
+.page2 .mobile .cont .txt li {line-height: 22px; font-size: 0.875em;}
+.page2 .mobile .cont .txt li .tit {display: inline-block; width: 60px; font-weight: 600; text-transform: capitalize;}
+.page2 .mobile .cont .txt li .desc {display: inline-block; width: calc(100% - 60px); white-space: nowrap; text-overflow: ellipsis; overflow: hidden; vertical-align: top;}
+
+.page2 .mobile .cont .btn {margin-top: 20px; opacity: 0; transform: translateY(80px); transition: opacity 0.6s, transform 0.4s; transition-delay: 0.3s;}
+.page2 .mobile > ul > li:hover .btn {opacity: 1; transform: translateY(0);}
+
+.page2 .mobile .cont .btn a {display: block; padding: 0 10px; text-align: center; line-height: 40px; font-size: 0.875em; color: #2c2c2c; background-color: #fff; text-transform: capitalize; border-radius: 25px; -webkit-box-shadow: 1px 1px 5px 2px rgba(0,0,0,0.05); box-shadow: 1px 1px 5px 2px rgba(0,0,0,0.05); box-sizing: border-box; transition: background-color 0.4s;}
+
+.page2 .mobile .cont .btn a:hover,
+.page2 .mobile .cont .btn a:focus {color: #fff; background-color: #7d8c98;}
+
+
+/* page3 */
+.page3 {height: 100vh; overflow: hidden; background-color: #f8f8f8; position: relative;}
+.page3 > .bg {position: absolute; top: 0; right: 0; width: 30%; height: 100%; background-color: #edf2f6;}
 
 /*pc-slide*/
-.page2 .pc .container {height: 100%;}
-.page2 .pc .slide {position: absolute; left: 0; width: calc(100% - 100px);}
-.page2 .pc .swiper-container {
+.page3 .pc .container {height: 100%;}
+.page3 .pc .slide {position: absolute; left: 0; width: calc(100% - 100px);}
+.page3 .pc .swiper-container {
 	width: 100%;
 	height: 100%;
 }
-.page2 .pc .swiper-slide {
+.page3 .pc .swiper-slide {
 	text-align: center;
 	overflow: hidden;
 	width: 100%;
-	height: calc(100vh - 40px);
-	padding: 20px 0;
+	height: calc(100vh - 60px);
+	padding: 30px 0;
 
 	/* Center slide text vertically */
 	display: -webkit-box;
@@ -114,72 +148,38 @@ body {min-width: 330px; overflow-y: hidden;}
 	align-items: center;
 }
 
-.page2 .pc .swiper-slide .desc {position: relative; width: 50%; height: 100%; background-color: #f8f8f8; padding: 8em 0; box-sizing: border-box;}
+.page3 .pc .swiper-slide .desc {position: relative; width: 50%; height: 100%; background-color: #f8f8f8; padding: 8em 0; box-sizing: border-box;}
 
-.page2 .pc .swiper-slide .desc h2 {position: relative; padding-bottom: 50px; font-size: 1.625em; color: #111; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;}
-.page2 .pc .swiper-slide .desc h2::before {content: ""; display: block; position: absolute; left: 50%; bottom: 0; margin-left: -160px; width: 320px; height: 1px; background-color: #363636; }
-.page2 .pc .swiper-slide .desc h3 {margin-top: 50px; font-size: 2em; color: #111;}
-.page2 .pc .swiper-slide .desc .tit {display: block; position: relative; top: -5px; font-size: 0.875em; color: #b4b3b1; letter-spacing: 3px; text-transform: uppercase;}
-.page2 .pc .swiper-slide .desc .txt {margin-top: 80px; display: inline-block; text-align: left;}
-.page2 .pc .swiper-slide .desc .txt li {line-height: 28px; text-align: left;}
-.page2 .pc .swiper-slide .desc .txt li span {display: inline-block; margin-right: 25px; font-weight: 600; text-transform: capitalize;}
+.page3 .pc .swiper-slide .desc h2 {position: relative; padding-bottom: 50px; font-size: 1.625em; color: #111; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;}
+.page3 .pc .swiper-slide .desc h2::before {content: ""; display: block; position: absolute; left: 50%; bottom: 0; margin-left: -160px; width: 320px; height: 1px; background-color: #363636; }
+.page3 .pc .swiper-slide .desc h3 {margin-top: 50px; font-size: 2em; color: #111;}
+.page3 .pc .swiper-slide .desc .tit {display: block; position: relative; top: -5px; font-size: 0.875em; color: #b4b3b1; letter-spacing: 3px; text-transform: uppercase;}
+.page3 .pc .swiper-slide .desc .txt {margin-top: 80px; display: inline-block; text-align: left;}
+.page3 .pc .swiper-slide .desc .txt li {line-height: 28px; text-align: left;}
+.page3 .pc .swiper-slide .desc .txt li span {display: inline-block; margin-right: 25px; font-weight: 600; text-transform: capitalize;}
 
-.page2 .pc .swiper-slide .desc .btn {position: absolute; width: 100%; bottom: 3em;}
-.page2 .pc .swiper-slide .desc .btn a {display: inline-block; width: 150px; margin-left: 15px; line-height: 48px; font-size: 0.875em; color: #2c2c2c; background-color: #fff; text-transform: capitalize; border-radius: 25px; -webkit-box-shadow: 1px 1px 5px 2px rgba(0,0,0,0.05); box-shadow: 1px 1px 5px 2px rgba(0,0,0,0.05); box-sizing: border-box; transition: background-color 0.4s;}
-.page2 .pc .swiper-slide .desc .btn a:first-child {margin-left: 0;}
+.page3 .pc .swiper-slide .desc .btn {position: absolute; width: 100%; bottom: 3em;}
+.page3 .pc .swiper-slide .desc .btn a {display: inline-block; width: 150px; margin-left: 15px; line-height: 48px; font-size: 0.875em; color: #2c2c2c; background-color: #fff; text-transform: capitalize; border-radius: 25px; -webkit-box-shadow: 1px 1px 5px 2px rgba(0,0,0,0.05); box-shadow: 1px 1px 5px 2px rgba(0,0,0,0.05); box-sizing: border-box; transition: background-color 0.4s;}
+.page3 .pc .swiper-slide .desc .btn a:first-child {margin-left: 0;}
 
-.page2 .pc .swiper-slide .desc .btn a:hover,
-.page2 .pc .swiper-slide .desc .btn a:focus {color: #fff; background-color: #7d8c98;}
+.page3 .pc .swiper-slide .desc .btn a:hover,
+.page3 .pc .swiper-slide .desc .btn a:focus {color: #fff; background-color: #7d8c98;}
 
-.page2 .pc .swiper-slide .img {width: 50%; height: 100%; overflow: hidden; position: relative;}
-.page2 .pc .swiper-slide .img img {max-width: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);}
+.page3 .pc .swiper-slide .img {width: 50%; height: 100%; overflow: hidden; position: relative;}
+.page3 .pc .swiper-slide .img img {max-width: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);}
 
-.page2 .pc .control {position: absolute; bottom: 20px; right: 0;}
-.page2 .pc .control .swiper-pagination {position: static; text-align: left; margin-bottom: 10px;}
+.page3 .pc .control {position: absolute; bottom: 30px; right: 0;}
+.page3 .pc .control .swiper-pagination {position: static; text-align: left; margin-bottom: 10px;}
 
-.page2 .pc .control .btn {font-size: 0;}
-.page2 .pc .control .btn .swiper-button-prev,
-.page2 .pc .control .btn .swiper-button-next {position: static; display: inline-block; margin: 0;  width: 45px; height: 45px; border: 1px solid #e6e3da; box-sizing: border-box;}
+.page3 .pc .control .btn {font-size: 0;}
+.page3 .pc .control .btn .swiper-button-prev,
+.page3 .pc .control .btn .swiper-button-next {position: static; display: inline-block; margin: 0;  width: 45px; height: 45px; border: 1px solid #e6e3da; box-sizing: border-box;}
 
-.page2 .pc .control .btn .swiper-button-prev {background: #fff url(../images/btn_prev.png) no-repeat center;}
-.page2 .pc .control .btn .swiper-button-next {background: #fff url(../images/btn_next.png) no-repeat center; border-left: 0 solid #000;}
+.page3 .pc .control .btn .swiper-button-prev {background: #fff url(../images/btn_prev.png) no-repeat center;}
+.page3 .pc .control .btn .swiper-button-next {background: #fff url(../images/btn_next.png) no-repeat center; border-left: 0 solid #000;}
 
-.page2 .pc .control .btn .swiper-button-prev::after {content: "";}
-.page2 .pc .control .btn .swiper-button-next::after {content: "";}
-
-
-/* page3 */
-.page3 {height: 100vh; overflow: hidden; background-color: #f8f8f8;}
-
-.page3 .mobile > ul > li {float: left; width: 20%; height: 100vh; background-color: #f8f8f8; padding: 0 40px; box-sizing: border-box;}
-.page3 .mobile > ul > li:hover {background-color: #e8dfd1;}
-
-.page3 .mobile .number {display: block; font-size: 6.25em; font-weight: 600; color: #eeeeee; letter-spacing: -5px; margin-top: 50px;}
-.page3 .mobile > ul > li:hover .number {color: #7d8c98;}
-
-.page3 .mobile .cont {transform: translateY(60px); transition: transform 0.6s;}
-.page3 .mobile > ul > li:hover .cont {transform: translateY(0); }
-
-
-.page3 .mobile .cont .title {margin-bottom: 20px;}
-.page3 .mobile .cont .title h3 {font-size: 1.625em; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;}
-.page3 .mobile .cont .title .tit {display: block; margin-top: -5px; font-size: 0.875em; font-weight: 600; color: #b4b3b1; text-transform: uppercase;}
-
-.page3 .mobile .cont .img {position: relative; width: 100%; height: 14em; overflow: hidden;}
-.page3 .mobile .cont .img img {max-width: 100%; position: absolute; width: 100%; top: 50%; left: 50%; transform: translate(-50%, -50%);}
-
-.page3 .mobile .cont .txt {margin-top: 20px;}
-.page3 .mobile .cont .txt li {line-height: 22px; font-size: 0.875em;}
-.page3 .mobile .cont .txt li .tit {display: inline-block; width: 60px; font-weight: 600; text-transform: capitalize;}
-.page3 .mobile .cont .txt li .desc {display: inline-block; width: calc(100% - 60px); white-space: nowrap; text-overflow: ellipsis; overflow: hidden; vertical-align: top;}
-
-.page3 .mobile .cont .btn {margin-top: 20px; opacity: 0; transform: translateY(80px); transition: opacity 0.6s, transform 0.4s; transition-delay: 0.3s;}
-.page3 .mobile > ul > li:hover .btn {opacity: 1; transform: translateY(0);}
-
-.page3 .mobile .cont .btn a {display: block; padding: 0 10px; text-align: center; line-height: 40px; font-size: 0.875em; color: #2c2c2c; background-color: #fff; text-transform: capitalize; border-radius: 25px; -webkit-box-shadow: 1px 1px 5px 2px rgba(0,0,0,0.05); box-shadow: 1px 1px 5px 2px rgba(0,0,0,0.05); box-sizing: border-box; transition: background-color 0.4s;}
-
-.page3 .mobile .cont .btn a:hover,
-.page3 .mobile .cont .btn a:focus {color: #fff; background-color: #7d8c98;}
+.page3 .pc .control .btn .swiper-button-prev::after {content: "";}
+.page3 .pc .control .btn .swiper-button-next::after {content: "";}
 
 
 /* page4 */
@@ -275,15 +275,15 @@ body {min-width: 330px; overflow-y: hidden;}
 	.page1 .right .desc .list .title {width: auto; margin-right: 20px; text-align: left;}
 	.page1 .right .desc .list .txt {text-align: left;}
 
-	.page2 .pc .slide {width: 100%;}
-	.page2 .pc .control {display: none;}
+	.page2 .mobile > ul > li {padding: 0 25px;}
+	.page2 .mobile .cont .title h3 {font-size: 1.25em;}
+	.page2 .mobile .cont .title .tit {margin-top: 0; font-size: 0.75em;}
+	.page2 .mobile .cont .txt {display: none;}
+	.page2 .mobile .cont .btn a {display: block; width: auto; padding: 0 20px; line-height: 32px; margin-top: 20px; margin-left: 0;}
+	.page2 .mobile .cont .btn a:first-child {margin-top: 0;}
 
-	.page3 .mobile > ul > li {padding: 0 25px;}
-	.page3 .mobile .cont .title h3 {font-size: 1.25em;}
-	.page3 .mobile .cont .title .tit {margin-top: 0; font-size: 0.75em;}
-	.page3 .mobile .cont .txt {display: none;}
-	.page3 .mobile .cont .btn a {display: block; width: auto; padding: 0 20px; line-height: 32px; margin-top: 20px; margin-left: 0;}
-	.page3 .mobile .cont .btn a:first-child {margin-top: 0;}
+	.page3 .pc .slide {width: 100%;}
+	.page3 .pc .control {display: none;}
 
 	.page4 .others .list li{margin-left: 20px; margin-right: 0;}
 	.page4 .others .list li:first-child {margin: 0;}
@@ -313,27 +313,27 @@ body {min-width: 330px; overflow-y: hidden;}
 	.page1 .right .desc .tools {display: none;}
 
 
-	.page2 .pc .swiper-slide {height: 100vh; padding: 0;}
-	.page2 .pc .swiper-slide .desc {position: absolute; bottom: 0; width: 100%; height: 20em; padding: 3em 0; background-color: rgba(0,0,0,0.4); z-index: 1;}
-	.page2 .pc .swiper-slide .img {width: 100%; height: 100%;}
-	.page2 .pc .swiper-slide .desc h2 {padding-bottom: 20px; font-size: 1.25em; color: #fff;}
-	.page2 .pc .swiper-slide .desc h2::before {background-color: #fff;}
-	.page2 .pc .swiper-slide .desc h3 {margin-top: 20px; font-size: 1.5em; color: #fff;}
-	.page2 .pc .swiper-slide .desc .tit {color: #d5d5d5;}
-	.page2 .pc .swiper-slide .desc .txt {display: none;}
-	.page2 .pc .swiper-slide .desc .btn {padding: 0 25px; box-sizing: border-box;}
-	.page2 .pc .swiper-slide .desc .btn a {line-height: 36px;}
+	.page2 .mobile > ul > li {float: none; width: 100%; height: 20vh; padding: 10px 25px; position: relative; overflow: hidden;}
+	.page2 .mobile .number {display: none;}
+	.page2 .mobile .cont {position: relative; margin-top: 0; height: 100%; transform: translate(0, 0);}
+	.page2 .mobile .cont .title {position: absolute; left: 50%; margin-left: 20px;}
+	.page2 .mobile .cont .img {width: 50%; height: 100%;}
+	.page2 .mobile .cont .txt {position: absolute; left: 8em; top: 50%; transform: translateY(-50%); margin-top: 0;}
+	.page2 .mobile .cont .txt li {line-height: 30px;}
+	.page2 .mobile .cont .btn {position: absolute; width: 100px; bottom: 0; left: 50%; margin-left: 20px; margin-top: 0; opacity: 1; transform: translateY(0);}
+	.page2 .mobile .cont .btn a {margin-top: 10px;}
 
 
-	.page3 .mobile > ul > li {float: none; width: 100%; height: 20vh; padding: 10px 25px; position: relative; overflow: hidden;}
-	.page3 .mobile .number {display: none;}
-	.page3 .mobile .cont {position: relative; height: 100%; transform: translate(0, 0);}
-	.page3 .mobile .cont .title {position: absolute; left: 50%; margin-left: 20px;}
-	.page3 .mobile .cont .img {width: 50%; height: 100%;}
-	.page3 .mobile .cont .txt {position: absolute; left: 8em; top: 50%; transform: translateY(-50%); margin-top: 0;}
-	.page3 .mobile .cont .txt li {line-height: 30px;}
-	.page3 .mobile .cont .btn {position: absolute; width: 100px; bottom: 0; left: 50%; margin-left: 20px; margin-top: 0; opacity: 1; transform: translateY(0);}
-	.page3 .mobile .cont .btn a {margin-top: 10px;}
+	.page3 .pc .swiper-slide {height: 100vh; padding: 0;}
+	.page3 .pc .swiper-slide .desc {position: absolute; bottom: 0; width: 100%; height: 20em; padding: 3em 0; background-color: rgba(0,0,0,0.4); z-index: 1;}
+	.page3 .pc .swiper-slide .img {width: 100%; height: 100%;}
+	.page3 .pc .swiper-slide .desc h2 {padding-bottom: 20px; font-size: 1.25em; color: #fff;}
+	.page3 .pc .swiper-slide .desc h2::before {background-color: #fff;}
+	.page3 .pc .swiper-slide .desc h3 {margin-top: 20px; font-size: 1.5em; color: #fff;}
+	.page3 .pc .swiper-slide .desc .tit {color: #d5d5d5;}
+	.page3 .pc .swiper-slide .desc .txt {display: none;}
+	.page3 .pc .swiper-slide .desc .btn {padding: 0 25px; box-sizing: border-box;}
+	.page3 .pc .swiper-slide .desc .btn a {line-height: 36px;}
 
 
 	.page4 .others .list li{margin-left: 20px;}
@@ -351,7 +351,7 @@ body {min-width: 330px; overflow-y: hidden;}
 	.page1 .right .desc .list > li:last-child .txt br {display: block;}
 
 
-	.page2 .pc .swiper-slide .img img {max-width: 150%;}
+	.page3 .pc .swiper-slide .img img {max-width: 150%;}
 
 	.page4 .others .list {padding: 50px 0;}
 	.page4 .others .list li{width: 100%; margin-left: 0; margin-top: 10px;}
@@ -367,7 +367,7 @@ body {min-width: 330px; overflow-y: hidden;}
 
 }
 @media only screen and (max-width: 360px){
-	.page2 .pc .swiper-slide .img img {max-width: 180%;}
+	.page3 .pc .swiper-slide .img img {max-width: 180%;}
 
 	.page6 .thanks .download a {margin-right: 0; margin-bottom: 20px;}
 
