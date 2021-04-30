@@ -1,0 +1,33 @@
+.clearfix::before, .clearfix::after {content: ""; display: block;}
+.clearfix::after {clear: both;}
+
+
+.slide {position: relative;}
+
+.view {position: relative; width: 100%; height: auto; overflow: hidden;}
+
+.view ul {position: absolute; top: 0; left: 0; width: 500%;}
+.view ul li {float: left; width: 20%; height: auto;}
+
+.view ul li img {display: none; width: 100%;}
+.view ul li img.pc {display: inline-block;}
+
+
+.control {position: absolute; width: 100%; bottom: 20px;}
+.control ul {text-align: center;}
+.control li {display: inline-block; text-align: center; margin-left: 10px;}
+.control li:first-child {margin-left: 0;}
+.control li a {position: relative; display: block; width: 12px; height: 12px; background-color: #666;border-radius: 50%; text-indent: -9999px; overflow: hidden;}
+
+.control li.active a,
+.control li:hover a {background-color: #dc6a84;}
+
+@media only screen and (max-width: 760px){
+	.view ul li img.pc {display: none;}
+	.view ul li img.tablet {display: inline-block;}
+}
+@media only screen and (max-width: 480px){
+	.view ul li img.pc {display: none;}
+	.view ul li img.tablet {display: none;}
+	.view ul li img.mobile {display: inline-block;}
+}

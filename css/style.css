@@ -58,13 +58,13 @@ body {min-width: 330px; overflow-y: hidden;}
 /* page1 */
 .page1 {height: 100vh; overflow: hidden;}
 
-.page1 .left {float: left; position: relative; width: 350px; padding-right: 30px; box-sizing: border-box;}
-.page1 .left::before {content: ""; display: block; position: absolute; right: 30px; top: 50%; margin-top: -150px; width: 2px; height: 300px; background-color: #ecdfcd;}
+.page1 .left {float: left; position: relative; width: 50%; padding: 3em 0; box-sizing: border-box;}
+.page1 .left::before {content: ""; display: block; position: absolute; right: 50px; top: 50%; margin-top: -150px; width: 2px; height: 300px; background-color: #ecdfcd;}
 
-.page1 .left .img {width: 100%;}
+.page1 .left .img {width: 350px; margin: 0 auto;}
 .page1 .left .img img {max-width: 100%;}
 
-.page1 .right {float: left; width: calc(100% - 370px);}
+.page1 .right {float: left;  width: 50%; padding: 3em 0; box-sizing: border-box;}
 .page1 .right .desc h2 {margin-bottom: 30px; font-size: 1.25em; font-weight: 600; letter-spacing: 5px; text-transform: uppercase;}
 
 .page1 .right .desc .list > li {line-height: 36px;}
@@ -268,7 +268,7 @@ body {min-width: 330px; overflow-y: hidden;}
 	.page1 .left::before {left: 50%; right: auto; top: auto; bottom: 0; margin-top: 0; margin-left: -125px; width: 250px; height: 2px;}
 	.page1 .left .img {width: 250px; margin: 0 auto;}
 	.page1 .left .img img {max-width: 100%;}
-	.page1 .right {width: 100%; }
+	.page1 .right {width: 100%; padding: 0;}
 	.page1 .right .desc {text-align: center;}
 	.page1 .right .desc .list > li {line-height: 30px;}
 	.page1 .right .desc .list .title {width: auto; margin-right: 20px; text-align: left;}

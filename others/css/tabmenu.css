@@ -1,0 +1,18 @@
+@charset "utf-8";
+
+
+.container {width: 1000px; margin: 0 auto;}
+
+.tab {margin-top: 50px;}
+
+.tab .btn {position: relative;}
+.tab .btn::after {content: ""; display: block; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background-color: #21bcb8;}
+.tab .btn li {display: inline-block;}
+.tab .btn li a {display: block; padding: 0 30px; line-height: 40px; color: #aaa; border: 1px solid #ccc; border-radius: 10px 10px 0 0; transition: background 0.5s;}
+.tab .btn li:hover a, 
+.tab .btn li.active a {color: #fff; background-color: #21bcb8;}
+
+.contents .desc {display: none; height: 500px; padding: 10px; color: #ccc;}
+.contents .desc.active {display: block;}
+.contents .desc h2 {font-size: 18px; margin-bottom: 10px;}
+
