@@ -110,7 +110,6 @@ $(function(){
 			} else {
 				pageN = 5;
 			}
-			console.log(pageN);
 
 			if(pageN < 1) {
 				$(".controller").removeClass("active");
@@ -202,7 +201,6 @@ $(function(){
 	var page2_swiper = new Swiper('.page2 .slide .swiper-container', {
 		slidesPerView: 1,
 		spaceBetween: 10,
-		// using "ratio" endpoints
 		breakpoints: {
 			1302: {
 				touchRatio: 0,
@@ -302,13 +300,6 @@ $(function(){
 			$(".page4 .bg .img").removeClass("active");
 			$(".page4 .bg .img").eq(slideN).addClass("active");
 		});
-		//console.log(slideN);
-		/*
-		$(".page4 .slide ul a").click(function(e){
-			e.preventDefault();
-		});
-
-		*/
 	});
 
 	function swipeAPI(evt, xd, yd){
